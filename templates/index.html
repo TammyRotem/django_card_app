@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Document</title>
+  </head>
+  <body>
+	<h1> This is the Home Page! </h1>
+	<h2> Your Username is {{username}}. </h2>
+	{% if user.is_authenticated %}
+	<h3> Your email is {{user.email}}. </h3>
+	{% endif %}
+
+  </body>
+</html>

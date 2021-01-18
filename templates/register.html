@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+	<form method = "POST" action="{% url 'tarot:register' %}">
+		{% csrf_token %}
+		{{form.as_p}}
+		{{profile_form.as_p}}
+		<input type = "submit" value = "Create New Account">
+	</form>
+
+{% endblock %}

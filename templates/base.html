@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+
+<html>
+
+<head>
+
+
+        <meta charset="utf-8">
+    <link rel="icon" href="{% static 'isto.ico' %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+     <style>
+        {% include "css/mystyle.css" %}
+    </style>
+
+
+
+
+
+        <title>Readings</title>
+
+
+
+</head>
+
+<body>
+<div class="navbar">
+  <a href="{% url 'tarot:home' %}">Home</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Regsiter
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="{% url 'tarot:register' %}">Create New User</a>
+      <a href="{% url 'tarot:login' %}">Login</a>
+      <a href="{% url 'tarot:logout' %}">Logout</a>
+    </div>
+  </div>
+
+    <div class="dropdown">
+    <button class="dropbtn">Cards
+      <i class="fa fa-caret-down"></i>
+    </button>
+ </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">Readings 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="{% url 'tarot:create_reading' %}">Enter New Reading</a>
+      <a href="{% url 'tarot:generate_reading' %}">Generate New Reading</a>
+      <a href="{% url 'tarot:review_reading' %}">Review Old Reading</a>
+    </div>
+  </div> 
+</div>
+
+<div id = "content">
+{% block page_content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+
+</html>

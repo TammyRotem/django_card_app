@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+
+<!--
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'tarot:logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'tarot:login' %}">Log In</a>
+{% endif %}
+
+-->
+
+<div class="flex-column-container">
+  <div class = "main_left">
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+    {% else %}
+    You are not logged in, log in if you'd like to access your readings
+    {% endif %}
+    <hr>
+    <p class = "main_paragraph"> To log a reading you've drawn yourself - go to <br> <b>Reading -> Enter New Reading</b></p>
+    <p class = "main_paragraph">If you don't have a deck, go to <b>Readings -> Generate New Reading to get a reading</b></p>
+    <p class = "main_paragraph">If you'd like to review a reading you've created before, go to <b>Readings -> Review Old Reading</b></p>
+  </div>
+  <div class = "main_right">
+   {% load static %} <img src="{% static 'images.jpg' %}"/>
+  </div>
+</div>
+  {% endblock %}
+
+

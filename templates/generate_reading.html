@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<form method = "POST">
+{% csrf_token %}
+<br>
+
+<label for="num_cards">Number of cards to draw:</label>
+<input type = "number" name = "num_cards" min = "2" max = "7">
+<br>
+<br>
+<label for="question">Question:</label>
+<input type = "text" name = "question">
+<br>
+<br>
+<button type = "submit">Generate Reading</button>
+</form>
+{% endblock %}

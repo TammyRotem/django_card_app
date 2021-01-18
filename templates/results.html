@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class = "myDiv">
+	<h1 class="mb4"> Reading id: {{ reading_id }}</h1>
+	<h1 class="mb4"> Reading Owner: {{ user.username }}</h1>
+	<h3 class="mb4"> Cards in Reading: {{ reading_num_cards }}</h3>
+	<h3 class="mb4"> Question: {{ question }}</h3>
+	
+
+<div class = "cardsDiv">
+	<h1 class="mb4"> Reading cards</h1>
+
+	{% for v in cards %}
+
+
+	<div class = "cardDiv-1" >
+		{%if v.card_suit %}
+		<p id = "card_{{ forloop.counter }}" data-status="on" class = "p1" onclick = "show_card_key_term('card_{{forloop.counter}}','{{v.card_key_term}}','{{v.card_name}}')">{{ v.card_name }}</p>
+		<p>	Element: {{ v.card_element }}</p>
+		<p>	Number: {{v.card_number}}</p>
+		<p>	Planet: {{ v.card_astro_planet }}</p>
+		<p> Astro Sign: {{v.card_astro_sign}}</p>
+		<img src = "{{v.card_image.url}}" width="180" height = "260">
+		{%else%}
+		<p class = "p1"> <b>{{ v.card_name }} </b>
+		<p> Element: {{ v.card_element }}</p>
+		<p>	Number: {{ v.card_number }}</p>
+		<p>	Planet: {{ v.card_astro_planet }}</p>
+		<p>	Astro Sign: {{v.card_astro_sign}}</p>
+		<img src = "{{v.card_image.url}}" width="180" height = "260">
+		{%endif%}
+	</div>
+	{% endfor %}
+</div>
+
+
+
+
+
+{% autoescape off %}
+<div style="width: 400px; float:left; background:#b8cff5; margin:10px;text-align: center;">
+	<p class = "p1"> Cards Elements Breakdown</p>
+	{{ plot_elements_div }}
+</div>
+
+<div style="width: 400px; float:left;  background:#b8cff5; margin:10px;text-align: center;">
+<p class = "p1" > Cards Arcana Rank Breakdown</p>
+{{ plot_arcana_rank_div }}
+</div>
+<div style="width: 850px; float:left;  background:#b8cff5; margin:10px;text-align: center;">
+<p class = "p1"> Cards Parallel Categories</p>
+{{ plot_categories_div }}
+</div>
+{% endautoescape %}
+
+		
+		
+
+		
+</div>
+
+		
+<script>
+  function show_card_key_term(id,key_term,card_name) {
+  let theToggle = document.getElementById(id)
+  let toggleStatus = theToggle.dataset.status;
+	switch (toggleStatus) {
+		case "on":
+			theToggle.dataset.status = "off";
+			document.getElementById(id).innerHTML = key_term;
+			break;
+		case "off":
+			theToggle.dataset.status = "on";
+			document.getElementById(id).innerHTML = card_name;
+	}
+  }
+
+</script>	
+
+{% endblock %}
+
+
+
